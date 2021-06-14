@@ -27,10 +27,11 @@ RSpec.describe 'show' do
   describe 'list of all plants' do
     it 'has unique plant names list that take less than 100 days' do
       visit "/gardens/#{@garden1.id}"
+      expect(page).to have_content(@garden1.name)
+      expect(page).to have_content('Unique List Of Plants Planted In Garden Plots')
       expect(page).to have_content(@plant1.name)
       expect(page).to_not have_content(@plant2.name)
       expect(page).to have_content(@plant3.name)
-      save_and_open_page
     end
   end
 end
