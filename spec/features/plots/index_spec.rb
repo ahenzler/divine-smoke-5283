@@ -22,11 +22,14 @@ RSpec.describe 'index' do
 
   describe 'list of all plot numbers and plant names' do
     it 'has plot numbers' do
+      expect(page).to have_content('Plots')
+      expect(page).to have_content('Plot Number:')
       expect(page).to have_content(@plot1.number)
       expect(page).to have_content(@plot2.number)
     end
 
     it 'has plant names for each plot' do
+      expect(page).to have_content('Planted In Plot')
       expect(page).to have_content(@plant1.name)
       expect(page).to have_content(@plant2.name)
       expect(page).to have_content(@plant3.name)
