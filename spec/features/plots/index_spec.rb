@@ -12,10 +12,10 @@ RSpec.describe 'index' do
     @plant2 = Plant.create!( name: "Eggplant", description: "Prefers Sunlight, well watered soil.", days_to_harvest: 70)
     @plant3 = Plant.create!( name: "Cucumber", description: "Prefers Sunlight, well watered soil.", days_to_harvest: 50)
 
-    PlotsPlant.create(plot_id: @plot1.id, plant_id: @plant1.id)
-    PlotsPlant.create(plot_id: @plot1.id, plant_id: @plant2.id)
-    PlotsPlant.create(plot_id: @plot2.id, plant_id: @plant2.id)
-    PlotsPlant.create(plot_id: @plot2.id, plant_id: @plant3.id)
+    PlotsPlant.create!(plot_id: @plot1.id, plant_id: @plant1.id)
+    PlotsPlant.create!(plot_id: @plot1.id, plant_id: @plant2.id)
+    PlotsPlant.create!(plot_id: @plot2.id, plant_id: @plant2.id)
+    PlotsPlant.create!(plot_id: @plot2.id, plant_id: @plant3.id)
 
     visit "/plots"
   end
@@ -26,8 +26,16 @@ RSpec.describe 'index' do
       expect(page).to have_content(@plot2.number)
     end
 
-    # it 'has plant names for each plot' do
-    #   expect(page).to have_content()
-    # end
+    it 'has plant names for each plot' do
+      expect(page).to have_content(@plant1.name)
+      expect(page).to have_content(@plant2.name)
+      expect(page).to have_content(@plant3.name)
+    end
+
+    it 'can remove plant' do
+      expect(page).to have_button("Remove #{@plant1.name}")
+      click_on("Remove #{@plant1.name}")
+      expect(page).to_not have_content(@plant1.name)
+    end
   end
 end

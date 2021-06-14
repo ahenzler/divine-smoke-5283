@@ -2,7 +2,7 @@
 <% @plots.each do |plot|%>
 <h2>Plot Number: <%= plot.number%></h2>
   <h3>Planted In Plot <% plot.plants.each do |plant|%></p>
-  <ul><%= plant.name %></ul>
+  <p><%= plant.name %> <%= button_to "Remove #{plant.name}", "/plots/#{plot.id}", method: :delete, params: {plant_id: plant.id}%></p>
   <% end %>
   <br>
 <% end%>

@@ -1,7 +1,8 @@
-Garden.destroy_all
+PlotsPlant.destroy_all
 Plot.destroy_all
 Plant.destroy_all
-PlotsPlant.destroy_all
+Garden.destroy_all
+
 
 
 @garden1 = Garden.create!(name: "Turing Community Garden", organic: true)
@@ -14,7 +15,7 @@ PlotsPlant.destroy_all
 @plant2 = Plant.create!( name: "Eggplant", description: "Prefers Sunlight, well watered soil.", days_to_harvest: 70)
 @plant3 = Plant.create!( name: "Cucumber", description: "Prefers Sunlight, well watered soil.", days_to_harvest: 50)
 
-PlotsPlant.create(plot_id: @plot1.id, plant_id: @plant1.id)
-PlotsPlant.create(plot_id: @plot1.id, plant_id: @plant2.id)
-PlotsPlant.create(plot_id: @plot2.id, plant_id: @plant2.id)
-PlotsPlant.create(plot_id: @plot2.id, plant_id: @plant3.id)
+PlotsPlant.create!(plot_id: @plot1.id, plant_id: @plant1.id)
+PlotsPlant.create!(plot_id: @plot1.id, plant_id: @plant2.id)
+PlotsPlant.create!(plot_id: @plot2.id, plant_id: @plant2.id)
+PlotsPlant.create!(plot_id: @plot2.id, plant_id: @plant3.id)

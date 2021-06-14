@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  get "/plots", to: "plots#index"
+  resources :plots
+  resources :garden
+  # get "/plots", to: "plots#index"
+  # get "/plots", to: "plots#index"
 end
