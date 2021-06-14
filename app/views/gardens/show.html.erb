@@ -1,0 +1,6 @@
+<h1><%= @garden.name %></h1>
+<h3>Unique List Of Plants Planted In Garden Plots <% @plants.uniq.each do |plant| %></h1>
+<% if plant.days_to_harvest < 100 %>
+  <ul> - <%= plant.name %></ul>
+  <% end %>
+<% end %>
